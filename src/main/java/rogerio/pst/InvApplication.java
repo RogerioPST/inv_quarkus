@@ -10,7 +10,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.MediaType;
-import rogerio.pst.dtos.ErroDTO;
+import rogerio.pst.dtos.StatsDTO;
 
 
 @OpenAPIDefinition(
@@ -23,7 +23,7 @@ import rogerio.pst.dtos.ErroDTO;
     ),
 	components = @Components(
 		schemas = {
-				@Schema(name="Erro", implementation=ErroDTO.class)
+				@Schema(name="Erro", implementation=StatsDTO.class)
 		},
 		responses = {				
 				@APIResponse(name="erro-400", responseCode = "400", description = "Parâmetros inválidos", 

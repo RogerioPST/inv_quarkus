@@ -3,9 +3,9 @@ package rogerio.pst.dtos;
 import java.math.BigDecimal;
 import java.util.List;
 
-import jakarta.inject.Named;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 
-@Named
+@RegisterForReflection
 public class TotalProventoDTO {	
 	private BigDecimal total;
 	private List<ProventoAnoDTO> anos;

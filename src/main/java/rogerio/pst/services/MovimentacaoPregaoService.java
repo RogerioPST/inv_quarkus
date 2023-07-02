@@ -10,6 +10,7 @@ import rogerio.pst.dtos.MovimentacaoPorAtivoDTO;
 import rogerio.pst.dtos.MovimentacaoPorAtivoPregaoDTO;
 import rogerio.pst.dtos.MovimentacaoTotalPorAtivoPregaoDTO;
 import rogerio.pst.dtos.StatsDTO;
+import rogerio.pst.dtos.TotalMovimentacaoPregaoDTO;
 import rogerio.pst.entities.MovimentacaoPregao;
 import rogerio.pst.entities.Pregao;
 import rogerio.pst.repositories.MovimentacaoPregaoRepository;
@@ -32,7 +33,7 @@ public class MovimentacaoPregaoService {
 		return movimentacaoPregaoRepository.findTotalAtivoNota(pregao, ativo);
 	}
 
-	public Integer findMovimentacaoPorAtivoq() {
+	public TotalMovimentacaoPregaoDTO findMovimentacaoPorAtivoq() {
 		return movimentacaoPregaoRepository.findMovimentacaoPorAtivoq();
 	}
 

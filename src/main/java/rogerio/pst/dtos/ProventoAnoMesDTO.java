@@ -2,10 +2,10 @@ package rogerio.pst.dtos;
 
 import java.math.BigDecimal;
 
-import jakarta.inject.Named;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 
 
-@Named
+@RegisterForReflection
 public class ProventoAnoMesDTO {	
 	private int ano;
 	private String anoMes;

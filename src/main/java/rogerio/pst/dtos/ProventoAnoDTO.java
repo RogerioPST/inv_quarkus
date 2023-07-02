@@ -2,10 +2,10 @@ package rogerio.pst.dtos;
 
 import java.util.List;
 
-import jakarta.inject.Named;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 
 
-@Named
+@RegisterForReflection
 public class ProventoAnoDTO {	
 	private int ano;
 	private List<ProventoMesDTO> meses;

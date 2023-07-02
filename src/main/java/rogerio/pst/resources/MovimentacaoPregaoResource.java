@@ -38,8 +38,8 @@ import rogerio.pst.dtos.MovimentacoesPregaoDTO;
 import rogerio.pst.dtos.PregaoComAtivoDTO;
 import rogerio.pst.dtos.ResumoPorAtivoDTO;
 import rogerio.pst.dtos.ResumoPorAtivoPregaoDTO;
-import rogerio.pst.dtos.RetornoSimulacaoDTO;
 import rogerio.pst.dtos.StatsDTO;
+import rogerio.pst.dtos.TotalMovimentacaoPregaoDTO;
 import rogerio.pst.entities.MovimentacaoPregao;
 import rogerio.pst.entities.Pregao;
 import rogerio.pst.enumerates.MensagensEnum;
@@ -52,7 +52,8 @@ import rogerio.pst.services.PregaoService;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@APIResponse(responseCode = "200", description = MensagensEnum.OBJETIVO_METODO_SIMULACAO, content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = RetornoSimulacaoDTO.class, type = SchemaType.OBJECT)))
+@APIResponse(responseCode = "200", description = MensagensEnum.OBJETIVO_METODO_SIMULACAO, 
+content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = StatsDTO.class, type = SchemaType.OBJECT)))
 @APIResponse(ref = "erro-400")
 @APIResponse(ref = "erro-500")
 
@@ -97,7 +98,7 @@ public class MovimentacaoPregaoResource {
 	@Operation(summary = "simular um empréstimo")
 
 	@Path("/totalq")
-	public Integer findMovimentacaoPorAtivoq(){		
+	public TotalMovimentacaoPregaoDTO findMovimentacaoPorAtivoq(){		
 		return movimentacaoPregaoService.findMovimentacaoPorAtivoq();	
 	}
 

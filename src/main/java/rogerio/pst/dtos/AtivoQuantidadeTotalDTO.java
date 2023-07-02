@@ -2,11 +2,11 @@ package rogerio.pst.dtos;
 
 import java.math.BigDecimal;
 
-import jakarta.inject.Named;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import rogerio.pst.entities.Pregao;
 
 
-@Named
+@RegisterForReflection
 public class AtivoQuantidadeTotalDTO {
 
 	private Pregao pregao;

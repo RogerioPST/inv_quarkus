@@ -5,12 +5,12 @@ import java.util.List;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import rogerio.pst.dtos.MovimentacaoPorAtivoDTO;
 import rogerio.pst.dtos.ProventoAnoMesDTO;
 import rogerio.pst.dtos.ProventoMesDTO;
 import rogerio.pst.entities.Provento;
+
+
+
 
 
 
@@ -21,19 +21,27 @@ public class ProventoRepository implements PanacheRepository<Provento> {
 	//@Query(value = "SELECT new br.rogerio.backend.dto.ProventoMesDTO(sum(p.valor),extract(month  from p.data) as n )   from Provento p group by n")
 	//@Query(value = "SELECT EXTRACT (month FROM p.data) as date from Provento p")
 	public List<ProventoMesDTO> findProventoPorMes(){
-		return find("#P.findProventoPorMes").project(ProventoMesDTO.class).list();
+		
+		//return find("SELECT substring(p.data, 1, 7) as anoMes, sum(p.valor) from Provento p group by anoMes order by p.data asc").project(ProventoMesDTO.class).list();
+		return find("SELECT CONCAT(YEAR(p.data), to_char(p.data,'mm')   ) as anoMes, sum(p.valor) from Provento p group by anoMes order by p.data asc").project(ProventoMesDTO.class).list();
+		
+				
+		//return find("#P.findProventoPorMes").project(ProventoMesDTO.class).list();
 	}
+	
+	
 	
 	//@Query(value = "SELECT new br.rogerio.backend.dto.ProventoMesDTO(sum(p.valor),extract(month  from p.data) as n )   from Provento p group by n")
 	//@Query(value = "SELECT EXTRACT (month FROM p.data) as date from Provento p")
 	public List<Provento> findProventoPorMesMapping(){
-		return find("#P.findProventoPorMesMapping").list();		
+		return find("SELECT p from Provento p order by p.data asc").list();		
 	}	
 	
 	//@Query(value = "SELECT new br.rogerio.backend.dto.ProventoMesDTO(sum(p.valor),extract(month  from p.data) as n )   from Provento p group by n")
 	//@Query(value = "SELECT EXTRACT (month FROM p.data) as date from Provento p")
 	public List<ProventoAnoMesDTO> findProventoPorAnoMes(){
-		return find("#P.findProventoPorAnoMes").project(ProventoAnoMesDTO.class).list();
+		return find("SELECT year(p.data) as ano, CONCAT(YEAR(p.data), to_char(p.data,'mm')   ) as anoMes, sum(p.valor) from Provento p group by ano, anoMes order by p.data asc").project(ProventoAnoMesDTO.class).list();
+		//return find("#P.findProventoPorAnoMes").project(ProventoAnoMesDTO.class).list();
 		
 	}
 

@@ -27,7 +27,6 @@ import jakarta.ws.rs.core.MediaType;
 import rogerio.pst.dtos.ProventoAnoDTO;
 import rogerio.pst.dtos.ProventoAnoMesDTO;
 import rogerio.pst.dtos.ProventoMesDTO;
-import rogerio.pst.dtos.RetornoSimulacaoDTO;
 import rogerio.pst.dtos.StatsDTO;
 import rogerio.pst.dtos.TotalProventoDTO;
 import rogerio.pst.entities.Ativo;
@@ -42,7 +41,8 @@ import rogerio.pst.services.ProventoService;
 @Tag(name = "Crédito", description = "Serviço de Simulação de Empréstimo")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@APIResponse(responseCode = "200", description = MensagensEnum.OBJETIVO_METODO_SIMULACAO, content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = RetornoSimulacaoDTO.class, type = SchemaType.OBJECT)))
+@APIResponse(responseCode = "200", description = MensagensEnum.OBJETIVO_METODO_SIMULACAO, 
+content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = StatsDTO.class, type = SchemaType.OBJECT)))
 @APIResponse(ref = "erro-400")
 @APIResponse(ref = "erro-500")
 
@@ -115,7 +115,7 @@ public class ProventoResource {
 		for(ProventoMesDTO mesDTO : meses){			
 			total = total.add(mesDTO.getTotal());
 			String ano = mesDTO.getAnoMes().substring(0,4);
-			String mes = mesDTO.getAnoMes().substring(5,7);
+			String mes = mesDTO.getAnoMes().substring(4,6);
 			
 			ProventoMesDTO novoMesDTO = new ProventoMesDTO(mes, mesDTO.getTotal());
 			

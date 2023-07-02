@@ -1,9 +1,9 @@
 package rogerio.pst.dtos;
 
-import jakarta.inject.Named;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import rogerio.pst.entities.Ativo;
 
-@Named
+@RegisterForReflection
 public class StatsDTO {
 	private long userCount;
 	private Ativo ativo;

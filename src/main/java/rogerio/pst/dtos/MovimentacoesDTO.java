@@ -3,13 +3,13 @@ package rogerio.pst.dtos;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.inject.Named;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Named
+@RegisterForReflection
 public class MovimentacoesDTO {
 	
 	private Date dia;

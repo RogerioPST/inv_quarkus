@@ -1,13 +1,13 @@
 package rogerio.pst.dtos;
 import java.math.BigDecimal;
 
-import jakarta.inject.Named;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Named
+@RegisterForReflection
 public class MovimentacaoPorAtivoPregaoDTO {	
 
 	private String diaAtivo;	
